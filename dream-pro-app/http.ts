@@ -16,7 +16,7 @@ async function getInstance(multipart?: string): Promise<AxiosInstance> {
       axios.create({
         timeout: 60000,
         headers: headers,
-        baseURL: 'http://192.168.85.248:8086/v1',
+        baseURL: 'http://44.202.152.37/v1',
       }),
     );
   });
