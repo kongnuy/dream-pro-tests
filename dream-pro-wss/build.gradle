@@ -1,0 +1,43 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.dreampro'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+processResources.enabled = true
+
+repositories {
+	mavenCentral()
+}
+
+bootJar {
+    launchScript()
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+  implementation 'com.github.dozermapper:dozer-core:6.5.2'
+  runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+  compileOnly 'org.projectlombok:lombok:1.18.12'
+  annotationProcessor 'org.projectlombok:lombok:1.18.4'
+
+  runtimeOnly('mysql:mysql-connector-java:8.0.20') {
+    exclude(module: 'protobuf-java')
+  }
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testCompileOnly 'org.projectlombok:lombok:1.18.4'
+  testAnnotationProcessor 'org.projectlombok:lombok:1.18.4'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
